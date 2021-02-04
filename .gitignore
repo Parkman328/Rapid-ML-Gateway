@@ -135,11 +135,19 @@ dmypy.json
 /mlflow
 /config
 /datarobot
+/veeva
+/salesforce
+/azure_ml
+/backup
 /cognitive_services
-#/precog
+precog/
+prophet/
 settings.json
 #do not upload debug
 /debug
 .DS_Store
-*/config/*
-
+*.ini
+app.py
+/debug
+logger.config
+nohup.out

@@ -1,0 +1,2791 @@
+{
+    "af4479c2-dc72-40c5-8ab4-4bd06ea96fc7": {
+      "name": "LA Active Business",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "city"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "CITY"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "00d39c1d-47a9-4c30-bbf3-c599444d5bf6",
+                          "path": "/LosAngeles-OpenData/Active_Business/Listing_of_Active_Businesses.csv",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "39ef02e6-7adc-46fc-a60a-a764865100eb"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "business_name"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "BUSINESS NAME"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "00d39c1d-47a9-4c30-bbf3-c599444d5bf6",
+                          "path": "/LosAngeles-OpenData/Active_Business/Listing_of_Active_Businesses.csv",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "eae7bd41-35d3-400b-ba41-d7132662597a"
+                }
+              },
+              "sxv": "v32.0.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    },
+    "b209994d-73e9-4517-aae3-8f260d40b3ab": {
+      "name": "Atlas-Sample-Companies",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "offices_country_code"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "offices"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "country_code"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "06016eb6-f7d6-4d23-a34a-e2eff14bdd8f"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "offices_city"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "offices"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "city"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "3d4e3eb4-7d38-457a-a713-c759f9e7e592"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "offices_address1"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "offices"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "address1"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "a464d099-6ef4-48ea-8f4d-33d61bc58b16"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "total_money_raised"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "total_money_raised"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "46dbcab4-a557-4f29-82de-7e13b6a5bc7d"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "founded_year"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "founded_year"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "bfb2cdbb-147d-45ae-83a0-116fcda038dd"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "number_of_employees"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "number_of_employees"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "b316b142-6a73-41c9-a3a2-2e37ef082fd2"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "category_code"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "category_code"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "902c5725-b775-4337-af2a-2e55fe9c0fc5"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "twitter_username"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "twitter_username"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "d82ec513-5634-4073-ac96-68e185720ba7"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "crunchbase_url"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "crunchbase_url"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "557c7b76-5baf-4209-acba-95f7f944cb62"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "name"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "name"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "cb12ad6e-9903-4a36-b0cc-1130b10cbd4b",
+                          "path": "/sample_training/companies",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "cd69afd7-757d-4f9a-9e45-0686a477dda8"
+                }
+              },
+              "sxv": "v32.0.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    },
+    "d689a962-ea22-4573-be5d-35709b016a58": {
+      "name": "Covid API",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "date"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "Date"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "b7d95025-44ca-42e1-97b0-1ca298865088"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_total_recovered"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "TotalRecovered"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "5c718a88-cd11-43ae-8ec5-32ba272c22a1"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_total_deaths"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "TotalDeaths"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "133fa956-b83a-418e-8c78-b89c0cab0e9a"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_total_confirmed"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "TotalConfirmed"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "a0d7521d-f83b-4e8f-9b7d-6205a5fba1a9"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_new_recovered"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "NewRecovered"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "2188a0fd-a5ea-4a0f-8c50-9d6a7f544fa0"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_new_deaths"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "NewDeaths"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "dcc8282c-8acf-4b55-8d69-bb84550d4c67"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "countries_country"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "Countries"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "Country"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "1c05223b-885c-4f2b-a8d4-6e6f304d39f2",
+                          "path": "/api.covid19api.com/summary",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "3ff80d03-e330-49c7-8099-87839b7c5687"
+                }
+              },
+              "sxv": "v32.0.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    },
+    "0375f22b-c7d2-4d35-8561-9f4d5aec72ee": {
+      "name": "FDA Drugs",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "medicinalproduct_1"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "medicinalproduct"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "1cf07b17-51f2-4048-b186-0817975a2893"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugtreatmentduration"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugtreatmentduration"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "47d3a53d-340b-4854-83e8-bffacd70493e"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugstartdateformat"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugstartdateformat"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "5d97af3a-0add-4968-9b62-e558bd57cf61"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugstartdate"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugstartdate"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "cd0611d7-7fab-4a2b-a3d0-6eb6a569bf1c"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugenddateformat"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugenddateformat"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "f7938680-2d9e-4b64-86da-3a078158803a"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugenddate"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugenddate"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "044f3fee-af32-4893-8e37-4b5eaf9b95a8"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugdosagetext"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugdosagetext"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "1f2e6e94-7ad7-48cb-8ae8-c00b39557f1d"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugcharacterization"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugcharacterization"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "74ac401e-f577-4504-8246-e724636c1239"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugauthorizationnumb"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugauthorizationnumb"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "025e1e8c-d725-4bf0-979b-5fac7d98b9d6"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "drugadministrationroute"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "drugadministrationroute"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "355a12f9-21aa-4c83-bd52-68035c8e0dae"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "medicinalproduct"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "atKey",
+                                                "value": {
+                                                  "cursor": {
+                                                    "tag": "Just",
+                                                    "value": {
+                                                      "tag": "shiftArray",
+                                                      "value": {
+                                                        "tag": "Just",
+                                                        "value": {
+                                                          "tag": "shiftMap",
+                                                          "value": {
+                                                            "tag": "Nothing"
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "key": "patient"
+                                                }
+                                              }
+                                            },
+                                            "key": "drug"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "medicinalproduct"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e3d41543-cf0d-4fbb-a900-e0b6264530ee",
+                          "path": "/event.json",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "9e4db1ae-dfdd-43b3-bc28-4f4195519def"
+                }
+              },
+              "sxv": "v32.0.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    },
+    "1dd1b10f-7a8b-4b1d-8ffc-674e069b64f8": {
+      "name": "Mission Chornological",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Core_serial",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "shiftMap",
+                                                "value": {
+                                                  "tag": "Just",
+                                                  "value": {
+                                                    "tag": "atKey",
+                                                    "value": {
+                                                      "cursor": {
+                                                        "tag": "Nothing"
+                                                      },
+                                                      "key": "rocket"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "key": "cores"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "core_serial"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "7c279dd0-9b4b-4db3-8bf5-0cdfb273e72f"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Payload type",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "shiftMap",
+                                                "value": {
+                                                  "tag": "Just",
+                                                  "value": {
+                                                    "tag": "atKey",
+                                                    "value": {
+                                                      "cursor": {
+                                                        "tag": "Nothing"
+                                                      },
+                                                      "key": "rocket"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "key": "payloads"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "payload_type"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "46143bd6-0e5e-4ccd-bc3a-e48bf4d9e5eb"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Major parts reused",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftMap",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Nothing"
+                                            },
+                                            "key": "rocket"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "reused"
+                                }
+                              }
+                            },
+                            "scalar": "Boolean"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "d586a021-3361-4602-beca-b3ca45272b45"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Payload reused",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "shiftMap",
+                                                "value": {
+                                                  "tag": "Just",
+                                                  "value": {
+                                                    "tag": "atKey",
+                                                    "value": {
+                                                      "cursor": {
+                                                        "tag": "Nothing"
+                                                      },
+                                                      "key": "rocket"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "key": "payloads"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "reused"
+                                }
+                              }
+                            },
+                            "scalar": "Boolean"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "412084ba-ce85-4d4b-9c66-b3775150087f"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Core reused",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "shiftArray",
+                                      "value": {
+                                        "tag": "Just",
+                                        "value": {
+                                          "tag": "atKey",
+                                          "value": {
+                                            "cursor": {
+                                              "tag": "Just",
+                                              "value": {
+                                                "tag": "shiftMap",
+                                                "value": {
+                                                  "tag": "Just",
+                                                  "value": {
+                                                    "tag": "atKey",
+                                                    "value": {
+                                                      "cursor": {
+                                                        "tag": "Nothing"
+                                                      },
+                                                      "key": "rocket"
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            },
+                                            "key": "cores"
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "key": "reused"
+                                }
+                              }
+                            },
+                            "scalar": "Boolean"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "03841488-7a03-485b-a875-027b76768a66"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Components",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "shiftKeys",
+                          "value": {
+                            "tag": "Just",
+                            "value": {
+                              "tag": "atKey",
+                              "value": {
+                                "cursor": {
+                                  "tag": "Nothing"
+                                },
+                                "key": "rocket"
+                              }
+                            }
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "cca09065-2ca8-443a-ac7b-556c532e1ac4"
+                }
+              },
+              "sxv": "v34.1.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": "Date",
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [
+                          {
+                            "tag": "millisecondsToDatetime"
+                          }
+                        ],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "launch_date_unix"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "4fafa86e-a434-4fcc-b4a0-1cea998e7021",
+                          "path": "/launches",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "69c02ee4-642f-49dc-ba0e-a616f3a1fe65"
+                }
+              },
+              "sxv": "v34.1.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    },
+    "b4258b5c-6338-4fa6-be04-affb3a34a0c3": {
+      "name": "SpaceX Rocket",
+      "description": {
+        "table": {
+          "steps": [
+            {
+              "act": {
+                "tag": "freeze"
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "launch_site_site_name_long"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "atKey",
+                                      "value": {
+                                        "cursor": {
+                                          "tag": "Nothing"
+                                        },
+                                        "key": "launch_site"
+                                      }
+                                    }
+                                  },
+                                  "key": "site_name_long"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "daf74161-6d2e-4a34-8109-37a683dc9deb"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "launch_site_site_name"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "atKey",
+                                      "value": {
+                                        "cursor": {
+                                          "tag": "Nothing"
+                                        },
+                                        "key": "launch_site"
+                                      }
+                                    }
+                                  },
+                                  "key": "site_name"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "25d00714-f243-4a8b-9f07-8b20072f3d2c"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "details"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "details"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "3bb3a6d8-47c1-46c1-a1bd-65bac68aec99"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "rocket_rocket_type"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "atKey",
+                                      "value": {
+                                        "cursor": {
+                                          "tag": "Nothing"
+                                        },
+                                        "key": "rocket"
+                                      }
+                                    }
+                                  },
+                                  "key": "rocket_type"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "4f1f5083-38b6-4565-9749-2fc88cf7cb03"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "rocket_rocket_name"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Just",
+                                    "value": {
+                                      "tag": "atKey",
+                                      "value": {
+                                        "cursor": {
+                                          "tag": "Nothing"
+                                        },
+                                        "key": "rocket"
+                                      }
+                                    }
+                                  },
+                                  "key": "rocket_name"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "421beb9b-4c70-4db4-8f6e-39e4aff6c4dc"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "launch_year"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "launch_year"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "e7fd74ae-49a4-4bbe-9b34-bbae94a51de5"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "mission_name"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "mission_name"
+                                }
+                              }
+                            },
+                            "scalar": "String"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "a6138613-5585-4426-908c-2ed2baf8e9c6"
+                }
+              },
+              "sxv": "v32.0.0"
+            },
+            {
+              "act": {
+                "tag": "addColumn",
+                "value": {
+                  "alias": {
+                    "dynamic": "flight_number"
+                  },
+                  "content": {
+                    "tag": "pick",
+                    "value": {
+                      "tag": "extract",
+                      "value": {
+                        "interp": [],
+                        "proj": {
+                          "tag": "atType",
+                          "value": {
+                            "cursor": {
+                              "tag": "Just",
+                              "value": {
+                                "tag": "atKey",
+                                "value": {
+                                  "cursor": {
+                                    "tag": "Nothing"
+                                  },
+                                  "key": "flight_number"
+                                }
+                              }
+                            },
+                            "scalar": "Number"
+                          }
+                        },
+                        "resource": {
+                          "dataSource": "e6fd9519-bd9e-4584-93ee-eb70c57e142e",
+                          "path": "/latest",
+                          "resourceType": "normal"
+                        }
+                      }
+                    }
+                  },
+                  "id": "ae544d7a-1334-45d1-a441-432b6f46bed1"
+                }
+              },
+              "sxv": "v32.0.0"
+            }
+          ]
+        }
+      },
+      "meta": {
+        "archived": false,
+        "disabledDestinations": [],
+        "selectedTypes": {}
+      }
+    }
+  }

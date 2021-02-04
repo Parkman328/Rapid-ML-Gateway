@@ -1,0 +1,14 @@
+[Unit]
+Description= Qlik-Sagemaker Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/centos
+User=centos
+ExecStart=/opt/rh/rh-python38/root/usr/bin/python /home/centos/Qlik-Rapid-API-Gateway/sagemaker
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target

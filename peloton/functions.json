@@ -1,0 +1,52 @@
+{
+    "Functions": [
+        {
+            "Id": 0,
+            "Name": "get_instructors",
+            "Type": 2,
+            "QRAP_Type": "instructors",
+            "ReturnType": 0,
+            "Params": {}
+        },
+        {
+            "Id": 1,
+            "Name": "get_my_info",
+            "Type": 2,
+            "QRAP_Type": "instructors",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        },
+        {
+            "Id": 2,
+            "Name": "get_my_workouts",
+            "Type": 2,
+            "QRAP_Type": "instructors",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        },
+        {
+            "Id": 3,
+            "Name": "get_my_workout_details",
+            "Type": 2,
+            "QRAP_Type": "instructors",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        },
+        {
+            "Id": 4,
+            "Name": "echo_table",
+            "Type": 2,
+            "QRAP_Type": "echo_table",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        }
+    ]
+}

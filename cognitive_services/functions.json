@@ -1,0 +1,57 @@
+{
+    "Functions": [
+        {
+            "Id": 0,
+            "Name": "translate",
+            "Type": 2,
+            "QRAP_Type": "rest_single",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0,
+                "str2": 0,
+                "str3": 0
+            }
+        },
+        {
+            "Id": 1,
+            "Name": "language_detection",
+            "Type": 2,
+            "QRAP_Type": "rest_single",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        },
+        {
+            "Id": 2,
+            "Name": "key_phrase_extraction",
+            "Type": 2,
+            "QRAP_Type": "rest_single",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        },
+        {
+            "Id": 3,
+            "Name": "sentiment_analysis",
+            "Type": 2,
+            "QRAP_Type": "rest_single",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0,
+                "str2": 0
+            }
+        },
+        {
+            "Id": 4,
+            "Name": "annomaly_detection",
+            "Type": 2,
+            "QRAP_Type": "rest_single",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        }
+    ]
+}

@@ -70,7 +70,7 @@ class ScriptEval:
                         all_rows[i] = [list(datatype) for datatype in zip(*all_rows[i])]
 
             logging.debug('Received data from Qlik (args): {}'.format(all_rows))
-            result = self.evaluate(context, header.script, ret_type, params=all_rows)
+            return_val = self.evaluate(context, header.script, ret_type, params=all_rows)
 
         else:
             # No parameters provided

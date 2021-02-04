@@ -1,36 +1,37 @@
-#! /usr/bin/env python3
+import os
+import sys
+PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.join(PARENT_DIR, 'generated'))
+sys.path.append(os.path.join(PARENT_DIR, 'helper_functions'))
 
-from ssedata import FunctionType
+
+#! /usr/bin/env python3
 from google.protobuf.json_format import MessageToDict
 import grpc
+from ssedata import FunctionType
 import argparse
 import json
 import logging
 import logging.config
-import os
-import sys
 import inspect
 import time
-from websocket import create_connection
-import socket
 import re
 from concurrent import futures
 from datetime import datetime
 import requests
 import configparser
-
-PARENT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(os.path.join(PARENT_DIR, 'generated'))
-sys.path.append(os.path.join(PARENT_DIR, 'helper_functions'))
-import qlist
-import pysize
-from ssedata import FunctionType
+import pandas as pd
+from scripteval import ScriptEval
 import ServerSideExtension_pb2 as SSE
-
-# import helper .py files
-import qlist
+import peloton
 import pysize
-import ServerSideExtension_pb2 as SSE
+import qlist
+import json
+
+# Add Generated folder to module path.
+
+
+# Constant and Local Vars
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 config = configparser.ConfigParser()
@@ -47,11 +48,11 @@ class ExtensionService(SSE.ConnectorServicer):
         :param funcdef_file: a function definition JSON file
         """
         self._function_definitions = funcdef_file
-        #self.ScriptEval = ScriptEval()
+        self.ScriptEval = ScriptEval()
         os.makedirs('logs', exist_ok=True)
         log_file = os.path.join(os.path.dirname(
             os.path.dirname(os.path.abspath(__file__))), 'logger.config')
-        print(log_file)
+        logging.debug(log_file)
         logging.config.fileConfig(log_file)
         logging.info(self._function_definitions)
         logging.info('Logging enabled')
@@ -70,10 +71,10 @@ class ExtensionService(SSE.ConnectorServicer):
         :return: Mapping of function id and implementation
         """
         return {
-            0: '_rest_single',
-            1: '_rest_30',
-            2: '_ws_single',
-            3: '_ws_batch',
+            0: '_instructors',
+            1: '_user_info',
+            2: '_user_workout',
+            3: '_workout_details',
             4: '_echo_table'
         }
 
@@ -91,7 +92,7 @@ class ExtensionService(SSE.ConnectorServicer):
         return header.functionId
 
     @staticmethod
-    def _rest_single(request, context):
+    def _instructors(request, context):
         """
         Rest using single variable
         """
@@ -109,236 +110,17 @@ class ExtensionService(SSE.ConnectorServicer):
                 "Caching ****Disabled**** for {}" .format(q_function_name))
             md = (('qlik-cache', 'no-store'),)
             context.send_initial_metadata(md)
-        response_rows = []
-        request_counter = 1
+       
+        instructors = peloton.get_instructors(url)
+        logging.debug(instructors)
         for request_rows in request:
-            logging.debug(
-                'Printing Request Rows - Request Counter {}' .format(request_counter))
-            request_counter = request_counter + 1
+            response_rows = []
             for row in request_rows.rows:
-                # Retrieve string value of parameter and append to the params variable
-                # Length of param is 1 since one column is received, the [0] collects the first value in the list
-                param = [d.strData for d in row.duals][0]
-                # Join with current timedate stamp
-                if (len(param) == 0):
-                    logging.info('Exiting {} TimeStamp: {} due to Data being Empty ' .format(
-                        function_name, datetime.now().strftime("%H:%M:%S.%f")))
-                else:
-                    payload = '{"data":"' + param + '"}'
-                    logging.debug('Showing Payload: {}'.format(payload))
-                    resp = requests.post(url, data=payload)
-                    logging.debug(
-                        'Show Payload Response as Text: {}'.format(resp.text))
-                    result = resp.text
-                    result = result.replace('"', '')
-                    result = result.strip()
-                    logging.debug('Show  Result: {}'.format(result))
-                # Create an iterable of dual with the result
-                    duals = iter([SSE.Dual(strData=result)])
-                    response_rows.append(SSE.Row(duals=duals))
-                # Yield the row data as bundled rows
+                response_rows.append(row)
         yield SSE.BundledRows(rows=response_rows)
+       
         logging.info('Exiting {} TimeStamp: {}' .format(
             function_name, datetime.now().strftime("%H:%M:%S.%f")))
-
-    @staticmethod
-    def _ws_single(request, context):
-        """
-         Single Row Processing for Websockets
-        :param request: iterable sequence of bundled rows
-        :return: the same iterable sequence as received
-        """
-        logging.info('Entering {} TimeStamp: {}' .format(
-            function_name, datetime.now().strftime("%H:%M:%S.%f")))
-        # Start by Gathering Environmental Varaiable
-
-        host = socket.gethostname()
-        ip_addr = socket.gethostbyname(host)
-        ws_url = config.get(q_function_name, 'ws_url')
-        token = config.get(q_function_name, 'token')
-        user_name = config.get(q_function_name, 'username')
-        ws_route = config.get(q_function_name, 'ws_route')
-        bCache = config.get(q_function_name, 'cache')
-        logging.debug('Pringint Route for WS {}' .format(ws_route))
-        logging.debug("Caching is set to {}" .format(bCache))
-        if (bCache.lower() == "true"):
-            logging.info(
-                "Caching ****Enabled*** for {}" .format(q_function_name))
-        else:
-            logging.info(
-                "Caching ****Disabled**** for {}" .format(q_function_name))
-            md = (('qlik-cache', 'no-store'),)
-            context.send_initial_metadata(md)
-        # In Future we will use the Token for Liencensing and Throttling
-        # Currently we are using Comblination of host+ipaddr+username for Client Identification
-        ws_url = ws_url + host + '_' + ip_addr+'_' + user_name+'_'
-        logging.debug('Websocket URL : {}' .format(ws_url))
-        ws = create_connection(ws_url)
-        response_rows = []
-        for request_rows in request:
-            # Iterate over rows
-            # Default code
-            for row in request_rows.rows:
-                # Retrieve string value of parameter and append to the params variable
-                # Length of param is 1 since one column is received, the [0] collects the first value in the list
-                param = [d.strData for d in row.duals][0]
-                result = ''
-                if (len(param) == 0):
-                    logging.debug('Parameters are Empty')
-                    result = 'Error'
-                else:
-                    payload = '{"action":"' + ws_route + \
-                        '","data":"' + param + '"}'
-                    logging.debug('Showing Payload: {}'.format(payload))
-                    ws.send(payload)
-                    #logging.info('Show  Payload Response: {}'.format(resp.text))
-                    resp = json.loads(ws.recv())
-                    logging.debug(resp)
-                    result = resp['result']
-                    logging.debug('Show  Result: {}'.format(result))
-                # Create an iterable of dual with the result
-                    duals = iter([SSE.Dual(strData=result)])
-                    response_rows.append(SSE.Row(duals=duals))
-                # Yield the row data as bundled rows
-        yield SSE.BundledRows(rows=response_rows)
-        ws.close()
-        logging.info('Exiting {} TimeStamp: {}' .format(
-            function_name, datetime.now().strftime("%H:%M:%S.%f")))
-
-    @staticmethod
-    def _ws_batch(request, context):
-        """
-        Mirrors the input and sends back the same data.
-        :param request: iterable sequence of bundled rows
-        :return: the same iterable sequence as received
-        """
-        logging.info('Entering {} TimeStamp: {}' .format(
-            function_name, datetime.now().strftime("%H:%M:%S.%f")))
-        host = socket.gethostname()
-        ip_addr = socket.gethostbyname(host)
-        logging.debug('Calling qrag.ini section "{}' .format(q_function_name))
-        ws_url = config.get(q_function_name, 'ws_url')
-        token = config.get(q_function_name, 'token')
-        user_name = config.get(q_function_name, 'username')
-        batch_size = int(config.get(q_function_name, 'batch_size'))
-        logging.debug('Batch Size {}' .format(batch_size))
-        ws_route = config.get(q_function_name, 'ws_route')
-        logging.info('API Route : {}' .format(ws_route))
-        # setup Caching
-        bCache = config.get(q_function_name, 'cache')
-        logging.debug("Caching is set to {}" .format(bCache))
-        if (bCache.lower() == "true"):
-            logging.info(
-                "Caching ****Enabled*** for {}" .format(q_function_name))
-        else:
-            logging.info(
-                "Caching ****Disabled**** for {}" .format(q_function_name))
-            md = (('qlik-cache', 'no-store'),)
-            context.send_initial_metadata(md)
-        ws_url = ws_url + host + '_' + ip_addr+'_' + user_name+'_'
-        logging.debug('Full url for ws: {} '.format(ws_url))
-        ws = create_connection(ws_url)
-        response_rows = []
-        outer_counter = 1
-        inner_counter = 1
-        request_counter = 1
-        for request_rows in request:
-            logging.debug(
-                'Printing Request Rows - Request Counter {}' .format(request_counter))
-            request_counter += 1
-            temp = MessageToDict(request_rows)
-            logging.debug('Temp Message to Dict {}' .format(temp))
-            test_rows = temp['rows']
-            logging.debug('Test Rows: {}' .format(test_rows))
-            request_size = len(test_rows)
-            logging.debug(
-                'Bundled Row Number of  Rows - {}' .format(request_size))
-            batches = list(qlist.divide_chunks(test_rows, batch_size))
-            for i in batches:
-                payload_t = {"action": ws_route}
-                logging.debug('PreFix Route Seletection {}' .format(payload_t))
-                logging.debug(len(batches))
-                payload_t["data"] = i
-                logging.debug('Size of payload {}' .format(
-                    pysize.get_size(payload_t)))
-                logging.debug('Showing Payload: {}'.format(payload_t))
-                logging.debug('batch number {}'.format(outer_counter))
-                ws.send(json.dumps(payload_t))
-                logging.debug('message sent WS')
-                outer_counter += 1
-                payload_t.clear()
-                for j in i:
-                    #logging.debug("Priniting i {}" .format(i))
-                    resp = json.loads(ws.recv())
-                    #logging.debug('Response Type : {}' .format(type(resp)))
-                    logging.debug('Counter: {} Payload Size: {}  Payload Response: {}'.format(
-                        inner_counter, pysize.get_size(resp), resp))
-                    inner_counter += 1
-                    result = resp['result']
-                    logging.debug('Log Resulst: {}' .format(result))
-                    duals = iter([SSE.Dual(strData=result)])
-                    # logging.debug(duals)
-                    #logging.debug('Printing Duals {}' .format(duals))
-                    # Yield the row data as bundled rows
-                    response_rows.append(SSE.Row(duals=duals))
-                    logging.debug(
-                        'Exiting Inner Loop: Printing j {}' .format(j))
-                yield SSE.BundledRows(rows=response_rows)
-        ws.close()
-        logging.info('Exiting {} TimeStamp: {}'  .format(
-            function_name, datetime.now().strftime("%H:%M:%S.%f")))
-
-    @staticmethod
-    def _rest_30(request, context):
-        """
-        Aggregates the parameters to a single comma separated string.
-
-        """
-
-        logging.info('Entering {} TimeStamp: {}' .format(
-            function_name, datetime.now().strftime("%H:%M:%S.%f")))
-        url = config.get(q_function_name, 'url')
-        bCache = config.get(q_function_name, 'cache')
-        logging.debug("Caching is set to {}" .format(bCache))
-        if (bCache.lower() == "true"):
-            logging.info(
-                "Caching ****Enabled*** for {}" .format(q_function_name))
-        else:
-            logging.info(
-                "Caching ****Disabled**** for {}" .format(q_function_name))
-            md = (('qlik-cache', 'no-store'),)
-            context.send_initial_metadata(md)
-        # Iterate over bundled rows
-        response_rows = []
-        for request_rows in request:
-            # Iterate over rows
-            for row in request_rows.rows:
-                # Retrieve string value of parameter and append to the params variable
-                # Length of param is 1 since one column is received, the [0] collects the first value in the list
-                param = [d.strData for d in row.duals]
-                if (len(param) == 0):
-                    logging.debug('Parameters are Empty')
-                    result = 'Error'
-                #logging.info('Showing Payload: {}'.format(param))
-                # Aggregate parameters to a single string
-                # Join payload via =','.join(param)
-                else:
-                    payload = '{"data":"' + (','.join(param)) + '"}'
-                    logging.debug('Showing Payload: {}'.format(payload))
-                    resp = requests.post(url, data=payload)
-                    logging.debug(
-                        'Show  Payload Response: {}'.format(resp.text))
-                    result = resp.text
-                    result = result.replace('"', '')
-                    result = result.strip()
-                    logging.debug('Show  Result: {}'.format(result))
-                # Create an iterable of dual with the result
-                    duals = iter([SSE.Dual(strData=result)])
-                    response_rows.append(SSE.Row(duals=duals))
-        # Yield the row data as bundled rows
-        yield SSE.BundledRows(rows=response_rows)
-        logging.info('Exiting Predict  v2 TimeStamp: {}' .format(
-            datetime.now().strftime("%H:%M:%S.%f")))
 
     @staticmethod
     def _cache(request, context):
@@ -447,11 +229,30 @@ class ExtensionService(SSE.ConnectorServicer):
             for row in request_rows.rows:
                 response_rows.append(row)
             yield SSE.BundledRows(rows=response_rows)
+    
 
+    def EvaluateScript(self, request, context):
+        """
+        This plugin supports full script functionality, that is, all function types and all data types.
+        :param request:
+        :param context:
+        :return:
+        """
+        logging.debug('In EvaluateScript: Main')
+        # Parse header for script request
+        metadata = dict(context.invocation_metadata())
+        logging.debug('Metadata {}',metadata)
+        header = SSE.ScriptRequestHeader()
+        header.ParseFromString(metadata['qlik-scriptrequestheader-bin'])
+        logging.debug('Header is : {}'.format(header))
+        logging.debug('Request is : {}' .format(request))
+        logging.debug("Context is: {}" .format(context))
+        return self.ScriptEval.EvaluateScript(header, request, context)
+        
     def GetCapabilities(self, request, context):
         """
         Get capabilities.
-        Note that either request or context is used in the implementation of this method, but still added as
+        Note that either request or context is used in the implementation of this method, but ll added as
         parameters. The reason is that gRPC always sends both when making a function call and therefore we must include
         them to avoid error messages regarding too many parameters provided from the client.
         :param request: the request, not used in this method.
@@ -558,8 +359,12 @@ class ExtensionService(SSE.ConnectorServicer):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    #config.read(os.path.join(os.path.dirname(__file__), 'config', 'qrag.ini'))
-    config.read(os.path.join(os.path.dirname(__file__), 'config', 'qrag.ini'))
+    conf_file = os.path.join(os.path.dirname(
+        os.path.abspath(__file__)), 'config', 'qrag.ini')
+
+    logging.debug(conf_file)
+    logging.info('Location of qrag.ini {}' .format(conf_file))
+    config.read(conf_file)
     port = config.get('base', 'port')
     parser.add_argument('--port', nargs='?', default=port)
     parser.add_argument('--pem_dir', nargs='?')
@@ -569,8 +374,7 @@ if __name__ == '__main__':
     # need to locate the file when script is called from outside it's location dir.
     def_file = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), args.definition_file)
-    print(def_file)
+    calc = ExtensionService(def_file)
     logging.info('*** Server Configurations Port: {}, Pem_Dir: {}, def_file {} TimeStamp: {} ***'.format(
         args.port, args.pem_dir, def_file, datetime.now().isoformat()))
-    calc = ExtensionService(def_file)
     calc.Serve(args.port, args.pem_dir)

@@ -1,0 +1,14 @@
+{
+    "Functions": [
+        {
+            "Id": 0,
+            "Name": "wine_quality_score",
+            "Type": 2,
+            "QRAP_Type": "rest_dataframe",
+            "ReturnType": 0,
+            "Params": {
+                "str1": 0
+            }
+        }
+    ]
+}
