@@ -20,7 +20,7 @@ Following Decisions were made
 - If you are thinking about using this product plese contact Qlik Account Rep if further assistance is needed.
 - Contributions such as Issues, Pull Request and additional codes are welcomed.
 
-The intial use case was to allow Qlik to use AI/ML functions and interact with other executions engines. The system utilizes GRPC messaging from Qlik and currently in the inital release support REST, Websocket APIs.
+The initial use case was to allow Qlik to use AI/ML functions and interact with other executions engines. The system utilizes GRPC messaging from Qlik and currently in the inital release support REST, Websocket APIs.
 
 Integration Use Cases are Following
 
@@ -116,7 +116,7 @@ Each API Connector will need small different setting changes
 Please pull from Docker hub from Partner Engineering Organization  
 [Qlik Partner Engineering Docker Hub](https://hub.docker.com/repository/docker/qlikpe/qrag)  
 [Qlik PE QRAG Realse Notes](https://github.com/Qlik-PE/Qlik-Rapid-API-Gateway/blob/master/docker/README.md)  
-#For Sample Test Please run (Please note Sagemaker Service is turned on and it is recommended you only turn on signle module for each Container for Production Use Case)
+#For Sample Test Please run (Please note Sagemaker Service is turned on and it is recommended you only turn on single module for each Container for Production Use Case)
 `docker run -d -p 50057:50057  --name qrag4 qlikpe/qrag:latest`
 
 # Basic Usage
