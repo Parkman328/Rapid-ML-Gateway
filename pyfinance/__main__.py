@@ -25,7 +25,6 @@ from ssedata import ArgType, FunctionType, ReturnType
 # import helper .py files
 import pysize
 import qlist
-import precog
 from scripteval import ScriptEval
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 config = configparser.ConfigParser()
